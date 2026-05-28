@@ -1,123 +1,117 @@
-# SecureVault-Dashboard
+# SecureVault Explorer
 
-This challenge is designed to test your ability to bridge Computer Science fundamentals with Modern Frontend Engineering.
-
-## 1. Business Scenario & Context
-
-**Client:** SecureVault Inc.
-**Industry:** Enterprise Cloud Security
-
-**The Problem:** SecureVault offers high-security cloud storage for law firms and banks. Their backend engineers have built a robust API that returns folder structures efficiently. However, their current frontend is a simple list that is hard to navigate. Clients are complaining that they can't manage nested files easily.
-
-**Your Role:** You are the incoming Junior Frontend Engineer. Your task is to design and build a modern, high-performance "File Explorer" UI that impresses the CTO and the Design Lead.
+> A high-performance, keyboard-accessible file explorer built for enterprise cloud security environments. Dark-mode cyber aesthetic. Zero component library dependencies.
 
 ---
 
-## 2. The Assignment Stages
+## Setup Instructions
 
-This is a **hybrid design/engineering challenge**. You are expected to demonstrate competence in both visual design logic and algorithmic frontend implementation.
+### Prerequisites
 
-### Phase 1: The Design System
+- Node.js ≥ 18
+- npm ≥ 9
 
-**Before writing code, you must design the interface.**
+### Install & Run
 
-- **Deliverable:** A link to a design file (Figma, Penpot, or Sketch) or a PDF export of your design frames.
-- **Requirement:** Your design file must include a dedicated **"Design System" page** that defines:
-  - **Typography Scale**
-  - **Color Palette**
-  - **Spacing Grid**
-  - **Component States**
-- **Brand Guidelines:** SecureVault wants a "Dark Mode" aesthetic that feels "cyber-secure, precise, and fast."
+```bash
+# Install dependencies
+npm install
 
-### Phase 2: The Implementation
+# Start the dev server
+npm run dev
 
-**Build the application using the design system you created in Phase 1.**
+# Build for production
+npm run build
 
-- **Constraint:** You **cannot** use component libraries like Bootstrap, Material UI, Chakra UI, or Ant Design. You must build your components from scratch to prove you understand CSS layout and component abstraction.
-- **Note:** CSS frameworks like Tailwind are allowed _only_ if you use them to build your own reusable component architecture.
+# Preview the production build
+npm run preview
+```
 
----
-
-## 3. User Stories & Acceptance Criteria
-
-### Core Features (Required)
-
-#### Story 1: The Recursive Tree
-
-> "As a lawyer with 10 years of case files, I need to navigate deeply nested folders without reloading the page."
-
-- **AC 1:** The UI renders the folder structure from the provided JSON.
-- **AC 2:** The component structure must be **recursive**. It should handle 2 levels of depth or 20 levels without breaking the UI.
-- **AC 3:** Folders must expand/collapse on click.
-
-#### Story 2: File Details & Inspection
-
-> "As a user, I need to see file metadata to ensure I'm opening the right version."
-
-- **AC 1:** Clicking a file "selects" it (distinct visual state based on your design).
-- **AC 2:** A "Properties Panel" displays the selected file's Name, Type, and Size.
-
-#### Story 3: Keyboard Accessibility
-
-> "As a power user, I hate reaching for my mouse. I want to navigate the vault using only my keyboard."
-
-- **AC 1:** `Up/Down` arrows move focus between the visible items in the explorer.
-- **AC 2:** `Right` arrow expands a folder; `Left` arrow collapses it.
-- **AC 3:** `Enter` selects the file.
-
-### The "Wildcard" Feature (Required)
-
-#### Story 4: The Innovation Clause
-
-> "As a developer, I want to add one feature that the client didn't ask for, but would significantly improve the user experience."
-
-- **Task:** Identify a gap in the requirements. What is missing?
-- **AC 1:** Implement **one** additional feature of your choice.
-- **AC 2:** In your README, explain _why_ you chose this feature and how it adds value to the business.
-
-### Bonus Feature (Optional)
-
-#### Story 5: Search & Filter
-
-- **AC 1:** A search bar filters the view. Matching items deep inside folders should force those folders to expand automatically.
+The app will be available at `http://localhost:5173`.
 
 ---
 
-## 4. Technical Requirements
+## Design File
 
-- **Data:** Use the `data.json` file provided in this repo. Do not edit the JSON structure, but you may add more items to test performance.
-- **Tech Stack:** React, Vue, Svelte, or Vanilla JS.
-- **Documentation:** Your README in the submission must include:
-  1.  Setup instructions.
-  2.  Link to your Design File.
-  3.  Explanation of your **Recursive Strategy** (how you managed the data structure).
-  4.  Explanation of your **Wildcard Feature**.
+> Figma design file: _[Link to your Figma file — set to "Anyone with the link can view"]_
 
----
+The design system defined in the Figma includes:
 
-## 5. Submission Instructions
-
-1.  **Fork** this repository.
-2.  Complete the code in your fork.
-3.  **Update the README:**
-    - **Delete** all the instructions in this file (the text you are reading now).
-    - **Replace** them with your own documentation as outlined in Section 4.
-    - _Note: Do not append your docs to the end. The final README should look like a professional project documentation, not a homework assignment._
-4.  Submit your repo link via the [online](https://forms.cloud.microsoft/e/PrfSgKKQ0k) form.
+| Token | Values |
+|---|---|
+| **Typography** | Syne (display/UI), Share Tech Mono (data/labels) |
+| **Color Palette** | Void black `#050508`, Cyan accent `#00e5ff`, Amber folders `#ffb300`, Green `#00ff88` |
+| **Spacing Grid** | 4px base unit — `sp-1` through `sp-12` |
+| **Component States** | Default, Hover, Focused, Selected, Disabled (empty folder) |
 
 ---
 
-### ⚠️ CRITICAL: Pre-Submission Checklist
+## Recursive Strategy
 
-**STOP and review your work.** To be eligible for the Solution Defense interview, your submission **MUST** pass the following "Gatekeeper" checks.
+The file tree is powered by a single recursive `<TreeNode />` component. It receives:
 
-If any of the following are incorrect, your submission will be flagged as incomplete and you will **NOT** be invited for an interview.
+- `node` — the current item (folder or file)
+- `depth` — incremented at each level, drives CSS `data-depth` for indentation
+- `expanded` — a `Set<string>` of open folder IDs, owned by the top-level App
+- `onToggle` / `onSelect` — callbacks hoisted to App state
 
-1.  **Public Repository:** Is your GitHub repository set to **Public**? (Private links will be auto-rejected).
-2.  **Audit-Ready History:** Does your Git commit history show your progress over time? (Repositories with a single "Initial Commit" or "Upload files" containing the entire project will be **rejected as unverifiable**).
-3.  **Working Deployment:** Have you tested your live link in an **Incognito/Private** window to ensure it loads without errors?
-4.  **No Restricted Libraries:** Did you build your own components? (Submissions using **Bootstrap, Material UI, or Chakra UI** will be disqualified).
-5.  **Design File Access:** Is your Figma/Penpot link included and set to **"Anyone with the link can view"**?
-6.  **Documentation:** Have you deleted the original assignment text from the `README.md` and replaced it with your own project documentation?
+On render, each `TreeNode` checks whether it's a folder and whether its ID exists in the `expanded` set. If open, it maps over `node.children` and renders another `<TreeNode>` for each — this recurse naturally handles any depth (2 levels or 200).
 
-> **By submitting your work, you acknowledge that failure to meet these criteria effectively ends your application process.**
+```
+<TreeNode depth=0>           // root folder
+  <TreeNode depth=1>         // subfolder
+    <TreeNode depth=2>       // deeper subfolder
+      <TreeNode depth=3 />   // file
+    </TreeNode>
+  </TreeNode>
+</TreeNode>
+```
+
+The `buildNodeMap()` utility creates a flat `id → node` lookup in a single pass, so properties panel lookups are O(1).
+
+---
+
+## Wildcard Feature: Folder Grid View (Center Pane)
+
+**The gap identified:** The spec only required a sidebar tree — but a list of filenames alone doesn't help users understand context or navigate efficiently. Law firms deal with hundreds of files; a tree alone forces users to mentally map the structure.
+
+**What was built:** A dual-view system — the left sidebar shows the hierarchical tree, while the center pane renders a **folder grid view** that mirrors macOS Finder / Windows Explorer. Clicking a folder in the tree shows its direct children as cards in the center pane. Clicking a file card selects it and populates the properties panel.
+
+**Business value:**
+1. **Reduced cognitive load** — the grid shows filenames, icons, and sizes at a glance
+2. **Context awareness** — users always see the folder they're inside, not just the selected file
+3. **Dual navigation modes** — power users use the keyboard + tree; casual users use the grid. Both paths lead to the same state.
+
+---
+
+## Keyboard Navigation (Story 3)
+
+All keyboard interactions are handled via a global `keydown` listener that operates on a `flatList` — a memoized array of currently-visible tree nodes built by `flattenVisible()`.
+
+| Key | Action |
+|---|---|
+| `↑` / `↓` | Move focus between visible items |
+| `→` | Expand focused folder |
+| `←` | Collapse focused folder (or jump to parent) |
+| `Enter` | Select file / toggle folder |
+| `/` | Focus the search input |
+
+---
+
+## Search & Filter (Bonus Story 5)
+
+The search bar filters the tree in real-time using `searchTree()`, which does a depth-first walk and returns two sets:
+
+- `matchIds` — nodes whose names contain the query
+- `expandIds` — ancestor folders that need to be force-expanded to reveal matches
+
+These are merged with the user's manual `expanded` state, so previously opened folders stay open and matching results are always visible regardless of depth.
+
+---
+
+## Tech Stack
+
+- **React 18** — component model and hooks
+- **Vite** — build tool
+- **Vanilla CSS** — custom design system, no component libraries
+- **Zero runtime dependencies** beyond React
