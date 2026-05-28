@@ -10,6 +10,8 @@ A visual decision tree editor for building and testing customer support conversa
 
 SupportFlow Visual Builder lets support teams design, edit, and test automated chatbot conversation flows through a live flowchart interface. Nodes represent questions or endpoints; connections represent the paths a customer can take. Everything is editable in real-time, and a built-in Preview Mode lets you simulate the bot experience instantly.
 
+**Live demo:** [https://supportflow120.netlify.app/](https://supportflow120.netlify.app/)
+
 ---
 
 ## Features

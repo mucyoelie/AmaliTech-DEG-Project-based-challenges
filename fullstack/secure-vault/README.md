@@ -2,6 +2,8 @@
 
 > A high-performance, keyboard-accessible file explorer built for enterprise cloud security environments. Dark-mode cyber aesthetic. Zero component library dependencies.
 
+**Live demo:** [https://secure-vault20.netlify.app/](https://secure-vault20.netlify.app/)
+
 ---
 
 ## Setup Instructions
