@@ -51,7 +51,6 @@ export function TreeNode({
   const isSelected = selected === node.id;
   const isFocused = focused === node.id;
 
-  // during search, keep only matches and their folder chain
   const isSearchActive = searchQuery && searchQuery.trim() !== '';
   if (isSearchActive && matchIds && !matchIds.has(node.id)) {
     if (!isFolder) return null;

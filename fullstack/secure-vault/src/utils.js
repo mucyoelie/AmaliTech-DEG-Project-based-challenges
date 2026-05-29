@@ -29,7 +29,6 @@ export function getFileIconType(name) {
   }
 }
 
-// used by keyboard navigation in the tree
 export function flattenVisible(nodes, expandedSet, depth = 0) {
   const result = [];
   for (const node of nodes) {
@@ -49,7 +48,6 @@ export function buildNodeMap(nodes, map = {}) {
   return map;
 }
 
-// search results + folders that should auto-expand
 export function searchTree(nodes, query) {
   const q = query.toLowerCase().trim();
   if (!q) return { matchIds: new Set(), expandIds: new Set() };
@@ -95,7 +93,6 @@ export function formatSize(size) {
 }
 
 export function getFilePath(nodeMap, nodeId) {
-  // walk down until we hit the target id
   function findPath(nodes, targetId, path = []) {
     for (const node of nodes) {
       const newPath = [...path, node.name];

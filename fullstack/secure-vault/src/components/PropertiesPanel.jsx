@@ -37,7 +37,6 @@ function getTypeLabelAndColor(node) {
   return { label: ext, color: colors[ext] || 'var(--clr-text-muted)' };
 }
 
-// simple fake date so metadata looks stable
 function mockDate(id) {
   const seed = id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
   const year = 2022 + (seed % 3);
@@ -51,7 +50,7 @@ export function PropertiesPanel({ node }) {
     return (
       <aside className="properties-panel">
         <div className="panel-header">
-          <div className="panel-header__label">// properties</div>
+          <div className="panel-header__label">properties</div>
         </div>
         <div className="panel-body">
           <div className="panel-empty">
@@ -64,7 +63,7 @@ export function PropertiesPanel({ node }) {
           </div>
 
           <div className="shortcuts-section">
-            <div className="shortcuts-title">// keyboard nav</div>
+            <div className="shortcuts-title">keyboard nav</div>
             {[
               [['↑', '↓'], 'Navigate'],
               [['→'], 'Expand folder'],
@@ -93,7 +92,7 @@ export function PropertiesPanel({ node }) {
   return (
     <aside className="properties-panel">
       <div className="panel-header">
-        <div className="panel-header__label">// properties</div>
+        <div className="panel-header__label">properties</div>
       </div>
       <div className="panel-body">
         <div className="prop-preview">
@@ -106,7 +105,7 @@ export function PropertiesPanel({ node }) {
         </div>
 
         <div className="prop-group">
-          <div className="prop-group__title">// metadata</div>
+          <div className="prop-group__title">metadata</div>
 
           <div className="prop-row">
             <div className="prop-row__key">name</div>
@@ -146,7 +145,7 @@ export function PropertiesPanel({ node }) {
         </div>
 
         <div className="prop-group">
-          <div className="prop-group__title">// access control</div>
+          <div className="prop-group__title">access control</div>
           <div className="prop-row">
             <div className="prop-row__key">encryption</div>
             <div className="prop-row__val" style={{ color: 'var(--clr-accent-green)' }}>AES-256</div>

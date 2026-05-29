@@ -6,7 +6,6 @@ import { PropertiesPanel } from './components/PropertiesPanel.jsx';
 import { IconShield, IconSearch, IconX, IconFolder, IconFolderOpen, IconFile } from './components/Icons.jsx';
 import { getFileIconType } from './utils.js';
 
-// cached lookup for selected/focused items
 const NODE_MAP = buildNodeMap(fileData);
 
 function findPath(nodes, targetId, path = []) {
@@ -149,7 +148,6 @@ export default function App() {
           </div>
           <div className="topbar__name">Secure<span>Vault</span></div>
         </div>
-        <div className="topbar__meta">FILE_EXPLORER // v2.1.0</div>
         <div className="topbar__status">
           <span className="topbar__status-dot" />
           VAULT SECURED
@@ -168,7 +166,6 @@ export default function App() {
           }}
         >
           <div className="sidebar__header">
-            <div className="sidebar__label">// vault explorer</div>
             <div className="search-wrap">
               <span className="search-icon"><IconSearch size={13} /></span>
               <input
