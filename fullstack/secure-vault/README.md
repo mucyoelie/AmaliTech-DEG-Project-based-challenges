@@ -35,7 +35,7 @@ The app will be available at `http://localhost:5173`.
 
 ## Design File
 
-> Figma design file: _[Link to your Figma file — set to "Anyone with the link can view"]_
+**Figma design:** [https://www.figma.com/proto/Rrnjy2IY0aa1b4A03gm3hh/Untitled?node-id=171-4068&starting-point-node-id=136%3A961](https://www.figma.com/proto/Rrnjy2IY0aa1b4A03gm3hh/Untitled?node-id=171-4068&starting-point-node-id=136%3A961)
 
 The design system defined in the Figma includes:
 
